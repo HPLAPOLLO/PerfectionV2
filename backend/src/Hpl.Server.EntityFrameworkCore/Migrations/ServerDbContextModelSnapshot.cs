@@ -146,6 +146,9 @@ namespace Hpl.Server.Migrations
                     b.Property<string>("Origin")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Destination")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ShipmentId")
                         .HasColumnType("nvarchar(max)");
 
