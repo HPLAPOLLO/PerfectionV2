@@ -1,4 +1,5 @@
 ﻿using Hpl.Server.departments;
+using Hpl.Server.shipments;
 using Hpl.Server.teams;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
@@ -29,6 +30,7 @@ public class ServerDbContext :
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
     public DbSet<Team> Teams { get; set; }
     public DbSet<Department> Departments { get; set; }
+    public DbSet<Shipment> Shipments { get; set; }
 
     #region Entities from the modules
 
@@ -98,6 +100,15 @@ public class ServerDbContext :
             b.Property(x => x.Description).IsRequired().HasMaxLength(500);
 
             b.HasIndex(x => x.Description);
+        });
+
+        builder.Entity<Shipment>(b =>
+        {
+            b.ToTable(ServerConsts.DbTablePrefix + "Shipments",
+                ServerConsts.DbSchema);
+            b.ConfigureByConvention(); //auto configure for the base class props
+
+            b.HasIndex(x => x.AirwayBillNumber);
         });
 
         //builder.Entity<YourEntity>(b =>
