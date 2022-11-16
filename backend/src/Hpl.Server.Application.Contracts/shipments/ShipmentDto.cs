@@ -9,6 +9,7 @@ namespace Hpl.Server.shipments
     {
         public string Branch { get; set; }
         public string Origin { get; set; }
+        public string Destination { get; set; }
         public string ShipmentId { get; set; }
         public string AirwayBillNumber { get; set; }
         public string CarrierCode { get; set; }

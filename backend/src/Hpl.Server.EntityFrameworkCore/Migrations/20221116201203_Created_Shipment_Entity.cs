@@ -16,6 +16,7 @@ namespace Hpl.Server.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Branch = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Origin = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Destination = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ShipmentId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AirwayBillNumber = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     CarrierCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
