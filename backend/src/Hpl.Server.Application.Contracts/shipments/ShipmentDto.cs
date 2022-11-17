@@ -17,12 +17,12 @@ namespace Hpl.Server.shipments
         public int LegOrder { get; set; }
         public string Flight { get; set; }
         public string LoadPort { get; set; }
-        public DateTime Etd { get; set; }
-        public DateTime Eta { get; set; }
-        public DateTime Ata { get; set; }
+        public DateTime? Etd { get; set; }
+        public DateTime? Eta { get; set; }
+        public DateTime? Ata { get; set; }
         public int AtdCt { get; set; }
         public int AtaCt { get; set; }
-        public DateTime JwAtd { get; set; }
+        public DateTime? JwAtd { get; set; }
         public string DischargePort { get; set; }
         public bool IsLinked { get; set; }
     }
