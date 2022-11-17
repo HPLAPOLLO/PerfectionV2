@@ -12,6 +12,30 @@
   <div class="card-body">
     <ngx-datatable [rows]="shipment.items" [count]="shipment.totalCount" [list]="list" default>
       <ngx-datatable-column [name]="'::Branch' | abpLocalization" prop="branch"></ngx-datatable-column>
+      <ngx-datatable-column [name]="'::Origin' | abpLocalization" prop="origin"></ngx-datatable-column>
+      <ngx-datatable-column [name]="'::Destination' | abpLocalization" prop="destination"></ngx-datatable-column>
+      <ngx-datatable-column [name]="'::Load Port' | abpLocalization" prop="loadPort"></ngx-datatable-column>
+      <ngx-datatable-column [name]="'::Flight' | abpLocalization" prop="flight"></ngx-datatable-column>
+      <ngx-datatable-column [name]="'::Shipment' | abpLocalization" prop="shipmentId"></ngx-datatable-column>
+      <ngx-datatable-column [name]="'::MAWB' | abpLocalization" prop="airwayBillNumber"></ngx-datatable-column>
+      <ngx-datatable-column [name]="'::PublishDate' | abpLocalization" prop="publishDate">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          {{ row.etd | date: 'MMM d, y' }}
+          {{ row.etd | date: 'hh:mm' }}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column [name]="'::PublishDate' | abpLocalization" prop="publishDate">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          {{ row.eta | date: 'MMM d, y' }}
+          {{ row.eta | date: 'hh:mm' }}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column [name]="'::PublishDate' | abpLocalization" prop="publishDate">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          {{ row.ata | date: 'MMM d, y' }}
+          {{ row.ata | date: 'hh:mm' }}
+        </ng-template>
+      </ngx-datatable-column>
     </ngx-datatable>
   </div>
 </div>
