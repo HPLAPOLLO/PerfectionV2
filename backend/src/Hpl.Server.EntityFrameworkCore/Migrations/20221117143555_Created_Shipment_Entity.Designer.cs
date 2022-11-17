@@ -13,7 +13,7 @@ using Volo.Abp.EntityFrameworkCore;
 namespace Hpl.Server.Migrations
 {
     [DbContext(typeof(ServerDbContext))]
-    [Migration("20221116201203_Created_Shipment_Entity")]
+    [Migration("20221117143555_Created_Shipment_Entity")]
     partial class Created_Shipment_Entity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -106,6 +106,9 @@ namespace Hpl.Server.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("CreatorId");
 
+                    b.Property<string>("Destination")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DischargePort")
                         .HasColumnType("nvarchar(max)");
 
@@ -119,14 +122,14 @@ namespace Hpl.Server.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("ExtraProperties");
 
-                    b.Property<string>("Flighgt")
+                    b.Property<string>("Flight")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsLinked")
                         .HasColumnType("bit");
 
-                    b.Property<string>("JwAtd")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("JwAtd")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("LastModificationTime")
                         .HasColumnType("datetime2")
