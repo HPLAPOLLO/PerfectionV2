@@ -20,6 +20,8 @@ export class ShipmentComponent implements OnInit {
 
     this.list.hookToQuery(shipmentStreamCreator).subscribe((response) => {
       this.shipment = response;
+
+      console.log(response);
     });
   }
 
