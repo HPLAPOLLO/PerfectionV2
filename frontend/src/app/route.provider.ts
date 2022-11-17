@@ -28,6 +28,19 @@ function configureRoutes(routesService: RoutesService) {
         parentName: '::Menu:Attendance',
         layout: eLayoutType.application,
       },
+      {
+        path: '/tracking',
+        name: '::Menu:Tracking',
+        iconClass: 'fas fa-location-arrow',
+        order: 2,
+        layout: eLayoutType.application,
+      },
+      {
+        path: '/shipments',
+        name: '::Menu:Shipments',
+        parentName: '::Menu:Tracking',
+        layout: eLayoutType.application,
+      },
     ]);
   };
 }
