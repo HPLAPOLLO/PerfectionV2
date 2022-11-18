@@ -10,15 +10,13 @@ import { ShipmentDto, ShipmentService } from '@proxy/shipments';
 })
 export class ShipmentComponent implements OnInit {
 
-  shipment = { items: [], totalCount: 0 } as PagedResultDto<ShipmentDto>;
+  shipment: ShipmentDto[];
 
-  constructor(public readonly list: ListService, private shipmentService: ShipmentService) { }
+  constructor(private shipmentService: ShipmentService) { }
 
   ngOnInit() {
 
-    const shipmentStreamCreator = (query) => this.shipmentService.getList(query);
-
-    this.list.hookToQuery(shipmentStreamCreator).subscribe((response) => {
+    this.shipmentService.getList().subscribe((response) => {
       this.shipment = response;
 
       console.log(response);
