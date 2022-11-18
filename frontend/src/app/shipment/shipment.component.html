@@ -1,65 +1,155 @@
 <div class="card">
-  <div class="card-header">
-    <div class="row">
-      <div class="col col-md-6">
-        <h5 class="card-title">
-          {{ '::Menu:Tracking' | abpLocalization }}
-        </h5>
-      </div>
-      <div class="text-end col col-md-6"></div>
-    </div>
-  </div>
   <div class="card-body">
-    <!-- <ngx-datatable [rows]="shipment"  [count]="shipment.totalCount" [list]="list" default>
-      <ngx-datatable-column [name]="'::Branch' | abpLocalization" prop="branch"></ngx-datatable-column>
-      <ngx-datatable-column [name]="'::Origin' | abpLocalization" prop="origin"></ngx-datatable-column>
-      <ngx-datatable-column [name]="'::Destination' | abpLocalization" prop="destination"></ngx-datatable-column>
-      <ngx-datatable-column [name]="'::Load Port' | abpLocalization" prop="loadPort"></ngx-datatable-column>
-      <ngx-datatable-column [name]="'::Flight' | abpLocalization" prop="flight"></ngx-datatable-column>
-      <ngx-datatable-column [name]="'::Shipment' | abpLocalization" prop="shipmentId"></ngx-datatable-column>
-      <ngx-datatable-column [name]="'::MAWB' | abpLocalization" prop="airwayBillNumber"></ngx-datatable-column>
-      <ngx-datatable-column [name]="'::PublishDate' | abpLocalization" prop="publishDate">
-        <ng-template let-row="row" ngx-datatable-cell-template>
-          {{ row.etd | date: 'MMM d, y' }}
-          {{ row.etd | date: 'hh:mm' }}
-        </ng-template>
-      </ngx-datatable-column>
-      <ngx-datatable-column [name]="'::PublishDate' | abpLocalization" prop="publishDate">
-        <ng-template let-row="row" ngx-datatable-cell-template>
-          {{ row.eta | date: 'MMM d, y' }}
-          {{ row.eta | date: 'hh:mm' }}
-        </ng-template>
-      </ngx-datatable-column>
-      <ngx-datatable-column [name]="'::PublishDate' | abpLocalization" prop="publishDate">
-        <ng-template let-row="row" ngx-datatable-cell-template>
-          {{ row.ata | date: 'MMM d, y' }}
-          {{ row.ata | date: 'hh:mm' }}
-        </ng-template>
-      </ngx-datatable-column>
-    </ngx-datatable> -->
+    <p-toolbar styleClass="mb-4">
+      <ng-template pTemplate="left">
+        <h5 class="m-0 me-1"><strong>List of Shipments </strong></h5>
+        <span class="p-input-icon-left" style="padding-left: 30px;">
+          <i class="pi pi-search" style="padding-left: 30px;"></i>
+          <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+            placeholder="Search..." />
+        </span>
+      </ng-template>
+
+      <ng-template pTemplate="right">
+        <button pButton pRipple icon="pi pi-sync" class="p-button-rounded p-button-success mr-2"
+          (click)="load()"></button>
+      </ng-template>
+    </p-toolbar>
 
     <p-table #dt [value]="shipment" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
-    responsiveLayout="scroll" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [rowsPerPageOptions]="[10,25,50]" [resizableColumns]="true" [rowHover]="true"
-    [globalFilterFields]="['branch']" styleClass="p-datatable-gridlines p-datatable-striped">
-
-    <ng-template pTemplate="header" class="pt-2">
+      responsiveLayout="scroll" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [rowsPerPageOptions]="[10,25,50]" [resizableColumns]="true" [rowHover]="true"
+      [globalFilterFields]="['branch', 'origin', 'loadPort', 'dischargePort', 'flight', 'shipmentId', 'airwayBillNumber']"
+      styleClass="p-datatable-gridlines p-datatable-striped">
+      <ng-template pTemplate="header" class="pt-2" >
+        <tr>
+          <!-- <th style="width: 3rem"></th> -->
+          <th style="width: 8rem" pSortableColumn="branch" pResizableColumn>
+            <div class="flex justify-content-between align-items-center">
+              Branch
+              <p-sortIcon field="branch"></p-sortIcon>
+              <p-columnFilter type="text" field="branch" display="menu" class="ml-auto"></p-columnFilter>
+            </div>
+          </th>
+          <th style="width: 8rem" pSortableColumn="origin" pResizableColumn>
+            <div class="flex justify-content-between align-items-center">
+              Origin
+              <p-sortIcon field="origin"></p-sortIcon>
+              <p-columnFilter type="text" field="origin" display="menu" class="ml-auto"></p-columnFilter>
+            </div>
+          </th>
+          <th style="width: 8rem" pSortableColumn="loadPort" pResizableColumn>
+            <div class="flex justify-content-between align-items-center">
+              Load Port
+              <p-sortIcon field="loadPort"></p-sortIcon>
+              <p-columnFilter type="text" field="loadPort" display="menu" class="ml-auto"></p-columnFilter>
+            </div>
+          </th>
+          <th style="width: 8rem" pSortableColumn="dischargePort" pResizableColumn>
+            <div class="flex justify-content-between align-items-center">
+              Discharge Port
+              <p-sortIcon field="dischargePort"></p-sortIcon>
+              <p-columnFilter type="text" field="dischargePort" display="menu" class="ml-auto"></p-columnFilter>
+            </div>
+          </th>
+          <th style="width: 8rem" pSortableColumn="flight" pResizableColumn>
+            <div class="flex justify-content-between align-items-center">
+              Flight
+              <p-sortIcon field="flight"></p-sortIcon>
+              <p-columnFilter type="text" field="flight" display="menu" class="ml-auto"></p-columnFilter>
+            </div>
+          </th>
+          <th pSortableColumn="shipmentId" pResizableColumn>
+            <div class="flex justify-content-between align-items-center">
+              Shipment
+              <p-sortIcon field="shipmentId"></p-sortIcon>
+              <p-columnFilter type="text" field="shipmentId" display="menu" class="ml-auto"></p-columnFilter>
+            </div>
+          </th>
+          <th pSortableColumn="airwayBillNumber" pResizableColumn>
+            <div class="flex justify-content-between align-items-center">
+              AirwayBill Number
+              <p-sortIcon field="airwayBillNumber"></p-sortIcon>
+              <p-columnFilter type="text" field="airwayBillNumber" display="menu" class="ml-auto"></p-columnFilter>
+            </div>
+          </th>
+          <th pSortableColumn="etd" pResizableColumn>
+            <div class="flex justify-content-between align-items-center">
+              Etd
+              <p-sortIcon field="etd"></p-sortIcon>
+              <p-columnFilter type="text" field="etd" display="menu" class="ml-auto"></p-columnFilter>
+            </div>
+          </th>
+          <th pSortableColumn="eta" pResizableColumn>
+            <div class="flex justify-content-between align-items-center">
+              Eta
+              <p-sortIcon field="eta"></p-sortIcon>
+              <p-columnFilter type="text" field="eta" display="menu" class="ml-auto"></p-columnFilter>
+            </div>
+          </th>
+          <th pSortableColumn="ata" pResizableColumn>
+            <div class="flex justify-content-between align-items-center">
+              Ata
+              <p-sortIcon field="ata"></p-sortIcon>
+              <p-columnFilter type="text" field="ata" display="menu" class="ml-auto"></p-columnFilter>
+            </div>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-shipment>
+        <tr>
+          <td>{{ shipment.branch }}</td>
+          <!-- <td>
+            <button type="button" pButton pRipple [pRowToggler]="product" class="p-button-text p-button-rounded p-button-plain" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+          </td> -->
+          <td>{{ shipment.origin }}</td>
+          <td>{{ shipment.loadPort }}</td>
+          <td>{{ shipment.dischargePort }}</td>
+          <td>{{ shipment.flight }}</td>
+          <td>{{ shipment.shipmentId }}</td>
+          <td>{{ shipment.airwayBillNumber }}</td>
+          <td>{{ shipment.etd  | date: 'MM-dd-yy hh:mm' }}</td>
+          <td>{{ shipment.eta | date: 'MM-dd-yy hh:mm' }}</td>
+          <td>{{ shipment.ata | date: 'MM-dd-yy hh:mm' }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+<!--
+    <ng-template pTemplate="rowexpansion" let-product>
       <tr>
-        <th pSortableColumn="branch" pResizableColumn>
-          Branch<p-sortIcon field="branch"></p-sortIcon>
-        </th>
-        <th pSortableColumn="origin" pResizableColumn>
-          Origin<p-sortIcon field="origin"></p-sortIcon>
-        </th>
+          <td colspan="7">
+              <div class="p-p-3">
+                  <p-table [value]="product.orders" dataKey="id">
+                      <ng-template pTemplate="header">
+                          <tr>
+                              <th pSortableColumn="id">Id <p-sortIcon field="price"></p-sortIcon></th>
+                              <th pSortableColumn="customer">Customer <p-sortIcon field="customer"></p-sortIcon></th>
+                              <th pSortableColumn="date">Date <p-sortIcon field="date"></p-sortIcon></th>
+                              <th pSortableColumn="amount">Amount <p-sortIcon field="amount"></p-sortIcon></th>
+                              <th pSortableColumn="stats">Status <p-sortIcon field="status"></p-sortIcon></th>
+                              <th style="width: 4rem"></th>
+                          </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-order>
+                          <tr>
+                              <td>{{order.id}}</td>
+                              <td>{{order.customer}}</td>
+                              <td>{{order.id}}</td>
+                              <td>{{order.amount | currency:'USD'}}</td>
+                              <td><span [class]="'order-badge order-' + order.status.toLowerCase()">{{order.status}}</span></td>
+                              <td><p-button type="button" icon="pi pi-search"></p-button></td>
+                          </tr>
+                      </ng-template>
+                      <ng-template pTemplate="emptymessage">
+                          <tr>
+                              <td colspan="6">There are no order for this product yet.</td>
+                          </tr>
+                      </ng-template>
+                  </p-table>
+              </div>
+          </td>
       </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-shipment>
-      <tr>
-        <td>{{ shipment.branch }}</td>
-        <td>{{ shipment.origin }}</td>
-      </tr>
-    </ng-template>
-  </p-table>
+  </ng-template> -->
 
   </div>
 </div>
