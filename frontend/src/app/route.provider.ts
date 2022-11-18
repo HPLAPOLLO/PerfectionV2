@@ -16,6 +16,19 @@ function configureRoutes(routesService: RoutesService) {
         layout: eLayoutType.application,
       },
       {
+        path: '/tracking',
+        name: '::Menu:Tracking',
+        iconClass: 'fas fa-plane-departure',
+        order: 2,
+        layout: eLayoutType.application,
+      },
+      {
+        path: '/shipments',
+        name: '::Menu:Shipments',
+        parentName: '::Menu:Tracking',
+        layout: eLayoutType.application,
+      },
+      {
         path: '/attendance',
         name: '::Menu:Attendance',
         iconClass: 'fas fa-book',
@@ -26,19 +39,6 @@ function configureRoutes(routesService: RoutesService) {
         path: '/departments',
         name: '::Menu:Departments',
         parentName: '::Menu:Attendance',
-        layout: eLayoutType.application,
-      },
-      {
-        path: '/tracking',
-        name: '::Menu:Tracking',
-        iconClass: 'fas fa-location-arrow',
-        order: 2,
-        layout: eLayoutType.application,
-      },
-      {
-        path: '/shipments',
-        name: '::Menu:Shipments',
-        parentName: '::Menu:Tracking',
         layout: eLayoutType.application,
       },
     ]);
