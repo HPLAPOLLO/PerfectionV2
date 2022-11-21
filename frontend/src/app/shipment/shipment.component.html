@@ -11,7 +11,7 @@
       </ng-template>
 
       <ng-template pTemplate="right">
-        <button pButton pRipple icon="pi pi-sync" class="p-button-rounded p-button-success mr-2"
+        <button pButton pRipple icon="pi pi-sync" class="p-button-rounded p-button mr-2"
           (click)="load()"></button>
       </ng-template>
     </p-toolbar>
@@ -24,14 +24,14 @@
       <ng-template pTemplate="header" class="pt-2" >
         <tr>
           <!-- <th style="width: 3rem"></th> -->
-          <th style="width: 8rem" pSortableColumn="branch" pResizableColumn>
+          <!-- <th style="width: 8rem" pSortableColumn="branch" pResizableColumn>
             <div class="flex justify-content-between align-items-center">
               Branch
               <p-sortIcon field="branch"></p-sortIcon>
               <p-columnFilter type="text" field="branch" display="menu" class="ml-auto"></p-columnFilter>
             </div>
-          </th>
-          <th style="width: 8rem" pSortableColumn="origin" pResizableColumn>
+          </th> -->
+          <th style="width: 4rem" pSortableColumn="origin" pResizableColumn>
             <div class="flex justify-content-between align-items-center">
               Origin
               <p-sortIcon field="origin"></p-sortIcon>
@@ -59,35 +59,35 @@
               <p-columnFilter type="text" field="flight" display="menu" class="ml-auto"></p-columnFilter>
             </div>
           </th>
-          <th pSortableColumn="shipmentId" pResizableColumn>
+          <th style="width: 8rem" pSortableColumn="shipmentId" pResizableColumn>
             <div class="flex justify-content-between align-items-center">
               Shipment
               <p-sortIcon field="shipmentId"></p-sortIcon>
               <p-columnFilter type="text" field="shipmentId" display="menu" class="ml-auto"></p-columnFilter>
             </div>
           </th>
-          <th pSortableColumn="airwayBillNumber" pResizableColumn>
+          <th style="width: 8rem" pSortableColumn="airwayBillNumber" pResizableColumn>
             <div class="flex justify-content-between align-items-center">
-              AirwayBill Number
+              MAWB
               <p-sortIcon field="airwayBillNumber"></p-sortIcon>
               <p-columnFilter type="text" field="airwayBillNumber" display="menu" class="ml-auto"></p-columnFilter>
             </div>
           </th>
-          <th pSortableColumn="etd" pResizableColumn>
+          <th style="width: 8rem" pSortableColumn="etd" pResizableColumn>
             <div class="flex justify-content-between align-items-center">
               Etd
               <p-sortIcon field="etd"></p-sortIcon>
               <p-columnFilter type="text" field="etd" display="menu" class="ml-auto"></p-columnFilter>
             </div>
           </th>
-          <th pSortableColumn="eta" pResizableColumn>
+          <th style="width: 8rem" pSortableColumn="eta" pResizableColumn>
             <div class="flex justify-content-between align-items-center">
               Eta
               <p-sortIcon field="eta"></p-sortIcon>
               <p-columnFilter type="text" field="eta" display="menu" class="ml-auto"></p-columnFilter>
             </div>
           </th>
-          <th pSortableColumn="ata" pResizableColumn>
+          <th style="width: 8rem" pSortableColumn="ata" pResizableColumn>
             <div class="flex justify-content-between align-items-center">
               Ata
               <p-sortIcon field="ata"></p-sortIcon>
@@ -98,19 +98,50 @@
       </ng-template>
       <ng-template pTemplate="body" let-shipment>
         <tr>
-          <td>{{ shipment.branch }}</td>
+          <!-- <td>{{ shipment.branch }}</td> -->
           <!-- <td>
             <button type="button" pButton pRipple [pRowToggler]="product" class="p-button-text p-button-rounded p-button-plain" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
           </td> -->
-          <td>{{ shipment.origin }}</td>
-          <td>{{ shipment.loadPort }}</td>
-          <td>{{ shipment.dischargePort }}</td>
-          <td>{{ shipment.flight }}</td>
-          <td>{{ shipment.shipmentId }}</td>
-          <td>{{ shipment.airwayBillNumber }}</td>
-          <td>{{ shipment.etd  | date: 'MM-dd-yy hh:mm' }}</td>
-          <td>{{ shipment.eta | date: 'MM-dd-yy hh:mm' }}</td>
-          <td>{{ shipment.ata | date: 'MM-dd-yy hh:mm' }}</td>
+          <td style="font-size: 0.875em;padding-bottom: 1em;">{{ shipment.origin }}</td>
+          <td style="font-size: 0.875em;">{{ shipment.loadPort }}</td>
+          <td style="font-size: 0.875em;">{{ shipment.dischargePort }}</td>
+          <td style="font-weight: bold; text-align: left; font-size: 0.875em;">
+            <i class="pi pi-flag-fill" style="color: #186A3B;"></i> {{ shipment.flight }}
+          </td>
+          <td  style="font-weight: bold; font-size: 0.875em;">
+            {{ shipment.shipmentId }}
+          </td>
+          <td style="font-weight: bold; color:rgb(121, 121, 156); font-size: 0.875em;">{{ shipment.airwayBillNumber | shipmentformat }}</td>
+          <td style="text-align: left; font-size: 0.875em;">
+            <div class="grid">
+              <div class="col-12" style="font-weight: bold;color: #6495ED;">
+                <i class="pi pi-calendar"></i> {{ shipment.etd  | date: 'MM-dd-yy' }}
+              </div>
+              <div class="col-12" style="font-weight: bold;color: #02243B;">
+                <i class="pi pi-clock"></i> {{ shipment.etd  | date: 'hh:mm' }}
+              </div>
+            </div>
+          </td>
+          <td style="font-size: 0.875em;">
+            <div class="grid">
+              <div class="col-12" style="font-weight: bold;">
+                <i class="pi pi-calendar"></i> {{ shipment.eta  | date: 'MM-dd-yy' }}
+              </div>
+              <div class="col-12" style="font-weight: bold;color: #2f8a04;">
+                <i class="pi pi-clock"></i> {{ shipment.eta  | date: 'hh:mm' }}
+              </div>
+            </div>
+          </td>
+          <td style="font-size: 0.875em;">
+            <div class="grid" *ngIf="shipment.ata">
+              <div class="col-12" style="font-weight: bold;color: #201602;">
+                <i class="pi pi-calendar"></i> {{ shipment.ata  | date: 'MM-dd-yy' }}
+              </div>
+              <div class="col-12" style="font-weight: bold;color: #58061a;">
+                <i class="pi pi-clock"></i> {{ shipment.ata  | date: 'hh:mm' }}
+              </div>
+            </div>
+          </td>
         </tr>
       </ng-template>
     </p-table>
