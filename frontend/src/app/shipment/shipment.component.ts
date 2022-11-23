@@ -25,7 +25,6 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 export class ShipmentComponent implements OnInit {
 
   shipment: ShipmentDto[];
-  expansionShipment: ShipmentDto[];
 
   constructor(private shipmentService: ShipmentService) { }
 
@@ -33,7 +32,7 @@ export class ShipmentComponent implements OnInit {
 
     this.shipmentService.getList().subscribe((response) => {
       this.shipment = response;
-      this.expansionShipment =  response;
+      console.log(this.shipment)
     });
   }
 
