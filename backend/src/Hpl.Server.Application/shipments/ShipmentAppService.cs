@@ -27,6 +27,10 @@ namespace Hpl.Server.shipments
             return items
                 .Select(item => new ShipmentDto
                 {
+                    ClientName = item.ClientName,
+                    ConsigneeName = item.ConsigneeName,
+                    ShipperName = item.ShipperName,
+                    CarrierName = item.CarrierName,
                     Branch = item.Branch,
                     Origin = item.Origin,
                     Destination = item.Destination,
@@ -44,7 +48,8 @@ namespace Hpl.Server.shipments
                     AtaCt = item.AtaCt,
                     JwAtd = item.JwAtd,
                     DischargePort = item.DischargePort,
-                    IsLinked = item.IsLinked
+                    IsLinked = item.IsLinked,
+                    TotalWeight = item.TotalWeight
                 }).ToList();
         }
     }
