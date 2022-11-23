@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ListService, PagedResultDto } from '@abp/ng.core';
 import { ShipmentDto, ShipmentService } from '@proxy/shipments';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { PrimeIcons } from 'primeng/api';
 
 @Component({
   selector: 'app-shipment',
@@ -25,15 +26,31 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 export class ShipmentComponent implements OnInit {
 
   shipment: ShipmentDto[];
+  // events: any[];
 
   constructor(private shipmentService: ShipmentService) { }
 
   ngOnInit() {
 
+  //   this.events = [
+  //     {status: 'Recieved',icon: PrimeIcons.CHECK , color: "#6495ED", iconCircle: PrimeIcons.CIRCLE},
+  //     {status: 'In transit',icon: PrimeIcons.CHECK, color: "#6495ED", iconCircle: PrimeIcons.CIRCLE},
+  //     {status: 'Arrived',icon: PrimeIcons.CHECK, color: '#6495ED', iconCircle: PrimeIcons.CIRCLE},
+  //     {status: 'Delivered',icon: PrimeIcons.CHECK, color: "#6495ED", iconCircle: PrimeIcons.CIRCLE}
+  // ];
+
+    this.load();
+  }
+
+  load() {
     this.shipmentService.getList().subscribe((response) => {
       this.shipment = response;
-      console.log(this.shipment)
+      // console.log(this.shipment)
     });
   }
+
+  // checkTimeline(status: string, check: string) {
+
+  // }
 
 }

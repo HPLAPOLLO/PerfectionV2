@@ -141,35 +141,80 @@
         </tr>
       </ng-template>
       <ng-template pTemplate="rowexpansion" let-shipments>
+        <!-- <tr>
+          <td colspan="11">
+            <p-timeline [value]="events" layout="horizontal" styleClass="customized-timeline">
+              <ng-template pTemplate="marker" let-event>
+                <span class="custom-marker p-shadow-2" [style.backgroundColor]="event.color">
+
+                  <i [ngClass]="event.icon"></i>
+                </span>
+              </ng-template>
+              <ng-template pTemplate="content" let-event>
+                <div style="font-weight: bold; font-size: 0.9rem">
+                  {{event.status}}
+                </div>
+              </ng-template>
+            </p-timeline>
+          </td>
+        </tr> -->
         <tr>
           <td colspan="11">
-              <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
-                  <div class="ui-g-12 ui-md-9">
-                      <div class="ui-g">
-                          <div class="ui-g-12">
-                              <b>Branch:</b> {{shipments.branch}}
-                          </div>
-                          <div class="ui-g-12">
-                              <b>Origin-Destination:</b> {{shipments.origin}} - {{shipments.destination }}
-                          </div>
-                          <div class="ui-g-12">
-                            <b>Total Weight:</b> {{shipments.totalWeight}}
-                          </div>
-                          <div class="ui-g-12">
-                            <b>Carrier:</b> {{shipments.carrierName}}
-                          </div>
-                          <div class="ui-g-12">
-                            <b>Shipper:</b> {{shipments.shipperName}}
-                          </div>
-                          <div class="ui-g-12">
-                            <b>Client:</b> {{shipments.clientName}}
-                          </div>
-                          <div class="ui-g-12">
-                            <b>Consignee:</b> {{shipments.consigneeName}}
-                          </div>
-                      </div>
+            <div class="grid">
+
+              <div class="col-12 lg:col-6 xl:col-3">
+                <div class="card p-0 overflow-hidden flex flex-column">
+                  <div class="flex align-items-center p-3">
+                    <i class="pi pi-map text-6xl text-green-500"></i>
+                    <div class="ml-3">
+                      <span class="text-green-500 block white-space-nowrap">Branch : {{shipments.branch}}</span>
+                      <span class="text-green-500 block text-2xl font-bold">{{shipments.origin}} - {{shipments.destination }} / {{shipments.totalWeight}} KG</span>
+                    </div>
                   </div>
+                  <img alt="conversion" class="w-full" src="assets/images/rate.svg">
+                </div>
               </div>
+
+              <div class="col-12 lg:col-6 xl:col-3">
+                <div class="card p-0 overflow-hidden flex flex-column">
+                  <div class="flex align-items-center p-3">
+                    <i class="pi pi-telegram text-6xl text-orange-500"></i>
+                    <div class="ml-3">
+                      <span class="text-orange-500 block white-space-nowrap">Carrier</span>
+                      <span class="text-orange-500 block text-2xl font-bold" pTooltip="{{shipments.carrierName}}" tooltipPosition="top">{{shipments.carrierName}}</span>
+                    </div>
+                  </div>
+                  <img alt="locations" class="w-full" src="assets/images/locations.svg">
+                </div>
+              </div>
+
+              <div class="col-12 lg:col-6 xl:col-3">
+                <div class="card p-0 overflow-hidden flex flex-column">
+                  <div class="flex align-items-center p-3">
+                    <i class="pi pi-users text-6xl text-blue-500"></i>
+                    <div class="ml-3">
+                      <span class="text-blue-500 block white-space-nowrap">Shipper</span>
+                      <span class="text-blue-500 block text-2xl font-bold" pTooltip="{{shipments.shipperName}}" tooltipPosition="top"> {{shipments.shipperName}}</span>
+                    </div>
+                  </div>
+                  <img alt="users" class="w-full" src="assets/images/users.svg">
+                </div>
+              </div>
+
+              <div class="col-12 lg:col-6 xl:col-3">
+                <div class="card p-0 overflow-hidden flex flex-column">
+                  <div class="flex align-items-center p-3">
+                    <i class="pi pi-users text-6xl text-purple-500"></i>
+                    <div class="ml-3">
+                      <span class="text-purple-500 block white-space-nowrap">Consignee</span>
+                      <span class="text-purple-500 block text-2xl font-bold" pTooltip="{{shipments.consigneeName}}" tooltipPosition="top">{{shipments.consigneeName}}</span>
+                    </div>
+                  </div>
+                  <img alt="interactions" class="w-full mt-auto" src="assets/images/interactions.svg">
+                </div>
+              </div>
+
+            </div>
           </td>
       </tr>
       </ng-template>
