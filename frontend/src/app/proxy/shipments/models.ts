@@ -1,6 +1,10 @@
 import type { AuditedEntityDto } from '@abp/ng.core';
 
 export interface ShipmentDto extends AuditedEntityDto<string> {
+  clientName?: string;
+  consigneeName?: string;
+  shipperName?: string;
+  carrierName?: string;
   branch?: string;
   origin?: string;
   destination?: string;
@@ -19,4 +23,5 @@ export interface ShipmentDto extends AuditedEntityDto<string> {
   jwAtd?: string;
   dischargePort?: string;
   isLinked: boolean;
+  totalWeight?: number;
 }
