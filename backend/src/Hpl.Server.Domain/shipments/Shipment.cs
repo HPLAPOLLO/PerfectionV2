@@ -10,6 +10,10 @@ namespace Hpl.Server.shipments
 {
     public class Shipment : AuditedAggregateRoot<Guid>
     {
+        public string? ClientName { get; set; }
+        public string? ConsigneeName { get; set; }
+        public string? ShipperName { get; set; }
+        public string? CarrierName { get; set; }
         public string Branch { get; set; }
         public string Origin { get; set; }
         public string Destination { get; set; }
@@ -28,5 +32,6 @@ namespace Hpl.Server.shipments
         public DateTime? JwAtd { get; set; }
         public string DischargePort { get; set; }
         public bool IsLinked { get; set; }
+        public float? TotalWeight { get; set; }
     }
 }
