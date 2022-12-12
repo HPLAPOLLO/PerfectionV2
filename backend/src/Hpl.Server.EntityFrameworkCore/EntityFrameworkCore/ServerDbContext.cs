@@ -1,4 +1,5 @@
 ﻿using Hpl.Server.departments;
+using Hpl.Server.HouseShipments;
 using Hpl.Server.shipments;
 using Hpl.Server.teams;
 using Microsoft.EntityFrameworkCore;
@@ -31,6 +32,7 @@ public class ServerDbContext :
     public DbSet<Team> Teams { get; set; }
     public DbSet<Department> Departments { get; set; }
     public DbSet<Shipment> Shipments { get; set; }
+    public DbSet<HouseShipment> HouseShipments { get; set; }
 
     #region Entities from the modules
 
@@ -109,6 +111,13 @@ public class ServerDbContext :
             b.ConfigureByConvention(); //auto configure for the base class props
 
             b.HasIndex(x => x.AirwayBillNumber);
+        });
+
+        builder.Entity<HouseShipment>(b =>
+        {
+            b.ToTable(ServerConsts.DbTablePrefix + "HouseShipments",
+                ServerConsts.DbSchema);
+            b.ConfigureByConvention(); //auto configure for the base class props
         });
 
         //builder.Entity<YourEntity>(b =>

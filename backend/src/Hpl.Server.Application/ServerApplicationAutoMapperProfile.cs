@@ -2,6 +2,7 @@
 using Hpl.Server.departments;
 using Hpl.Server.teams;
 using Hpl.Server.shipments;
+using Hpl.Server.HouseShipments;
 
 namespace Hpl.Server;
 
@@ -19,5 +20,6 @@ public class ServerApplicationAutoMapperProfile : Profile
         CreateMap<CreateUpdateTeamDto, Team>();
 
         CreateMap<Shipment, ShipmentDto>();
+        CreateMap<HouseShipment, HouseShipmentDto>();
     }
 }
